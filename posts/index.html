@@ -1,4 +1,3 @@
-<!-- POSTS page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +32,30 @@
         <h1>POSTS PAGE</h1>
     </header>
 
-    <main></main>
+    <main class="container mt-4">
+        <!-- Post Creation Form -->
+        <section id="post-creation" class="mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Create a New Post</h5>
+                </div>
+                <div class="card-body">
+                    <form id="create-post-form">
+                        <div class="form-group">
+                            <label for="post-text">Post Content</label>
+                            <textarea id="post-text" class="form-control" rows="3" placeholder="What's on your mind?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Post View Section -->
+        <section id="post-view" class="mb-4">
+            <!-- Posts will be dynamically inserted here -->
+        </section>
+    </main>
 
     <footer></footer>
 

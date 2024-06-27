@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Reg.css">
+</head>
+<body>
+    <div class="gradient-bg">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+            <div class="container">
+                <a class="navbar-brand text-white" href="#">MicroblogLite</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Post</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container d-flex vh-100 align-items-center justify-content-center">
+            <div class="row w-100">
+                <div class="col-md-5 d-flex flex-column justify-content-center text-white">
+                    <h1>Fly makes you faster</h1>
+                    <p class="lead">New free template by uicookies.com. For more templates visit the site. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <button class="btn btn-success">Login</button>
+                </div>
+                <div class="col-md-7 d-flex justify-content-center">
+                    <div class="card p-4 shadow-lg form-card">
+                        <div class="card-body">
+                            <h3 class="card-title text-center">Sign Up for Free</h3>
+                            <form id="registrationForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="username" placeholder="User name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block btn-custom-width">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+      <img src="https://source.unsplash.com/random/200x300" alt="" class="img-fluid rounded">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="registration.js"></script>
+</body>
+</html>

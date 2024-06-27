@@ -1,1 +1,18 @@
-/* Landing Page CSS */
+body {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  text-align: center;
+}
+
+header, main, footer {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+nav.navbar {
+  background-color: transparent !important;
+}

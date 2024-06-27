@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Profile</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="profile.css" rel="stylesheet">
+  <script src="auth.js"></script>
+  <script>
+    if (!isLoggedIn()) {
+      window.location.href = 'login.html'; // Redirect to login page if not logged in
+    }
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Profile</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link btn btn-danger text-white" href="#" id="logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="profile-header">
+      <img src="https://picsum.photos/800/200" class="cover-pic" alt="Cover Picture">
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header text-center">
+            <img src="https://picsum.photos/150" class="rounded-circle profile-pic-about mx-auto" alt="Profile Picture" id="profilePic">
+            <h1 class="profile-name" id="profileName">John Doe</h1>
+          </div>
+          <div class="card-body text-center">
+            <p class="profile-bio" id="profileBio">Web Developer | Tech Enthusiast | Traveler</p>
+            <a href="#" class="btn btn-primary">Follow</a>
+            <p><strong>Location:</strong> <span id="profileLocation">New York, USA</span></p>
+            <p><strong>Joined:</strong> <span id="profileJoined">January 2022</span></p>
+            <p><strong>Website:</strong> <a href="#" id="profileWebsite">www.johndoe.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header">
+            Create a New Post
+          </div>
+          <div class="card-body">
+            <form id="create-post-form">
+              <div class="form-group">
+                <label for="postContent">Content</label>
+                <textarea class="form-control" id="postContent" rows="3" placeholder="What's on your mind?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Post</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            Recent Posts
+          </div>
+          <div class="card-body" id="recentPosts">
+            <!-- Posts will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>
