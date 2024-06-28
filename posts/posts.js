@@ -65,10 +65,18 @@ function displayUserProfile(user) {
   const fullName = document.getElementById('user-full-name');
   const username = document.getElementById('user-username');
   
+  const navProfilePic = document.getElementById('user-nav-profile-pic');
+  const navUsername = document.getElementById('user-username-nav');
+  
   if (profilePic && fullName && username) {
     profilePic.src = `https://picsum.photos/seed/${user.username}/50`;
     fullName.textContent = user.fullName;
     username.textContent = user.username;
+  }
+  
+  if (navProfilePic && navUsername) {
+    navProfilePic.src = `https://picsum.photos/seed/${user.username}/30`;
+    navUsername.textContent = user.fullName;
   }
 }
 

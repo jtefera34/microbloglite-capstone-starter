@@ -78,6 +78,7 @@ style.innerHTML = `
         display: flex;
         flex-direction: column;
         align-items: center;
+        color:black
     }
     .notification-content h3 {
         margin-bottom: 20px;

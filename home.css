@@ -40,7 +40,7 @@ header {
 }
 
 .content {
-    background: rgba(0, 0, 0, 0.7); /* Increased opacity for full page cover */
+    background: rgba(0, 0, 139, 0.7); /* Increased opacity for full page cover */
     padding: 20px;
     border-radius: 10px;
     width: 80%;
