@@ -1,18 +1,57 @@
 body {
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  color: white;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  text-align: center;
+  background: linear-gradient(to right, #0a0e17, #14213d);
+  font-family: 'Arial', sans-serif;
+  color: #fff;
 }
 
-header, main, footer {
-  padding-left: 20px;
-  padding-right: 20px;
+.card {
+  background-color: #1c1e29;
+  color: #fff;
+  border: none;
 }
 
-nav.navbar {
-  background-color: transparent !important;
+.card-header,
+.card-footer {
+  background-color: #14213d;
+  color: #fff;
+}
+
+.form-control {
+  background-color: #14213d;
+  color: #fff;
+  border: none;
+}
+
+.form-control::placeholder {
+  color: #888;
+}
+
+.btn-dark {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-dark:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.text-dark {
+  color: #007bff !important;
+}
+
+.text-dark:hover {
+  color: #0056b3 !important;
+}
+
+.link-secondary {
+  color: #ddd;
+}
+
+.link-secondary:hover {
+  color: #bbb;
+}
+
+footer {
+  color: #ddd;
 }

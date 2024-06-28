@@ -4,8 +4,14 @@
 const loginData = getLoginData();
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Fetch user profile information
+  fetchUserProfile();
+
   // Fetch posts when the page loads
   fetchPosts();
+
+  // Fetch members list
+  fetchMembers();
 
   // Handle post creation
   document.getElementById('create-post-form').addEventListener('submit', async function(event) {
@@ -13,7 +19,96 @@ document.addEventListener('DOMContentLoaded', function() {
     await createPost();
     fetchPosts(); // Refresh the posts after creating a new one
   });
+
+  // Handle logout
+  document.getElementById('logout-button').addEventListener('click', function() {
+    logout();
+  });
+
+  // Handle profile navigation
+  document.getElementById('profile-nav-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.replace("/profile.html");
+  });
+
+  // Handle username click
+  document.getElementById('user-username').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.replace("/profile.html");
+  });
 });
+
+async function fetchUserProfile() {
+  try {
+    const response = await fetch(`http://microbloglite.us-east-2.elasticbeanstalk.com/api/users/${loginData.username}`, {
+      headers: {
+        'Authorization': `Bearer ${loginData.token}`
+      }
+    });
+
+    if (response.ok) {
+      const user = await response.json();
+      displayUserProfile(user);
+    } else {
+      const error = await response.json();
+      alert(`Error: ${error.message}`);
+      console.log(error);
+    }
+  } catch (error) {
+    alert('An unexpected error occurred');
+    console.log(error);
+  }
+}
+
+function displayUserProfile(user) {
+  const profilePic = document.getElementById('user-profile-pic');
+  const fullName = document.getElementById('user-full-name');
+  const username = document.getElementById('user-username');
+  
+  if (profilePic && fullName && username) {
+    profilePic.src = `https://picsum.photos/seed/${user.username}/50`;
+    fullName.textContent = user.fullName;
+    username.textContent = user.username;
+  }
+}
+
+async function fetchMembers() {
+  try {
+    const response = await fetch('http://microbloglite.us-east-2.elasticbeanstalk.com/api/users', {
+      headers: {
+        'Authorization': `Bearer ${loginData.token}`
+      }
+    });
+
+    if (response.ok) {
+      const members = await response.json();
+      displayMembers(members);
+    } else {
+      const error = await response.json();
+      alert(`Error: ${error.message}`);
+      console.log(error);
+    }
+  } catch (error) {
+    alert('An unexpected error occurred');
+    console.log(error);
+  }
+}
+
+function displayMembers(members) {
+  const membersList = document.querySelector('#members-list .list-group');
+  membersList.innerHTML = ''; // Clear existing members
+
+  members.forEach(member => {
+    const memberItem = document.createElement('li');
+    memberItem.className = 'list-group-item';
+    memberItem.innerHTML = `
+      <img src="https://picsum.photos/seed/${member.username}/30" alt="Profile Picture" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+      <span>${member.fullName}</span>
+      <small class="d-block text-muted">@${member.username}</small>
+    `;
+    membersList.appendChild(memberItem);
+  });
+}
 
 async function fetchPosts() {
   try {
@@ -48,7 +143,7 @@ function displayPosts(posts) {
 
     postCard.innerHTML = `
       <div class="card-header d-flex align-items-center">
-        <img src="https://picsum.photos/50" alt="User Profile Picture" class="rounded-circle mr-3" style="width: 50px; height: 50px;">
+        <img src="https://picsum.photos/50" alt="User Profile Picture" class="rounded-circle me-3" style="width: 50px; height: 50px;">
         <div>
           <h5 class="mb-0">${post.username}</h5>
           <small>${new Date(post.createdAt).toLocaleString()}</small>
@@ -57,18 +152,18 @@ function displayPosts(posts) {
       <div class="card-body">
         <p>${post.text}</p>
       </div>
-      <div class="card-footer">
-        <button class="btn btn-primary like-button" data-post-id="${post._id}" data-liked="false">Like</button>
-        <button class="btn btn-danger delete-button" data-post-id="${post._id}">Delete</button>
+      <div class="card-footer post-actions">
+        <i class="bi bi-hand-thumbs-up like-icon" data-post-id="${post._id}" data-liked="false"></i>
+        <i class="bi bi-trash delete-icon" data-post-id="${post._id}"></i>
       </div>
     `;
 
     postViewSection.appendChild(postCard);
   });
 
-  // Add event listeners for the like and delete buttons
-  document.querySelectorAll('.like-button').forEach(button => {
-    button.addEventListener('click', function() {
+  // Add event listeners for the like and delete icons
+  document.querySelectorAll('.like-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
       const postId = this.getAttribute('data-post-id');
       const liked = this.getAttribute('data-liked') === 'true';
       if (liked) {
@@ -79,8 +174,8 @@ function displayPosts(posts) {
     });
   });
 
-  document.querySelectorAll('.delete-button').forEach(button => {
-    button.addEventListener('click', function() {
+  document.querySelectorAll('.delete-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
       const postId = this.getAttribute('data-post-id');
       deletePost(postId);
     });
@@ -198,4 +293,11 @@ async function unlikePost(likeId, button) {
     alert('An unexpected error occurred');
     console.log(error);
   }
+}
+
+function logout() {
+  // Clear login data
+  localStorage.removeItem('loginData');
+  // Redirect to login page
+  window.location.replace("/index.html");
 }

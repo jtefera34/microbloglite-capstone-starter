@@ -1,11 +1,26 @@
 body {
-  background: linear-gradient(to right, #ece9e6, #ffffff);
+  background: linear-gradient(to right, #0a0e17, #14213d);
   font-family: 'Arial', sans-serif;
+  color: #fff;
+}
+
+.header-bar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.company-name {
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.company-name:hover {
+  text-decoration: underline;
 }
 
 .profile-header {
   position: relative;
-  margin-top: 50px;
   margin-bottom: 30px;
 }
 
@@ -26,7 +41,7 @@ body {
   width: 150px;
   height: 150px;
   object-fit: cover;
-  border: 5px solid #fff;
+  border: 5px solid #0a0e17;
 }
 
 .profile-name {
@@ -37,18 +52,50 @@ body {
 
 .profile-bio {
   font-size: 16px;
-  color: #666;
+  color: #ddd;
 }
 
 .profile-pic-about {
   width: 100px;
   height: 100px;
   object-fit: cover;
-  border: 3px solid #fff;
+  border: 3px solid #0a0e17;
 }
 
 .card {
+  background-color: #1c1e29;
+  color: #fff;
+  border: none;
   margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #14213d;
+  color: #fff;
+}
+
+.card-body {
+  background-color: #1c1e29;
+}
+
+.form-control {
+  background-color: #14213d;
+  color: #fff;
+  border: none;
+}
+
+.form-control::placeholder {
+  color: #888;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
 .post {
@@ -62,4 +109,9 @@ body {
 
 .post small {
   color: #888;
+}
+
+.logout-container {
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
